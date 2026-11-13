@@ -40,6 +40,8 @@ def chat():
         "session_id": session_id,
         "reply": result["bot_response"],
         "intent": result["detected_intent"],
+        "preprocessed": result["preprocessed_text"],
+        "fired_rule": result["fired_rule"],
         "context": result["context"],
         "is_answered": result["is_answered"]
     })
