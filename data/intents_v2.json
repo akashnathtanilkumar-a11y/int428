@@ -1,0 +1,63 @@
+{
+  "version": "v2",
+  "intents": [
+    {
+      "name": "greeting",
+      "patterns": ["\\bhello\\b", "\\bhi\\b", "\\bhey\\b", "\\bgood (morning|afternoon|evening)\\b", "\\bnamaste\\b"],
+      "keywords": ["hello", "hi", "hey", "namaste"]
+    },
+    {
+      "name": "programmes",
+      "patterns": ["\\bprogrammes?\\b", "\\bcourses?\\b", "\\bdegrees?\\b", "\\bwhat do you offer\\b", "\\bbranches\\b", "\\bstreams\\b", "\\bdepartments?\\b"],
+      "keywords": ["programme", "course", "degree", "branch", "stream", "department"]
+    },
+    {
+      "name": "eligibility",
+      "patterns": ["\\beligib(le|ility)\\b", "\\bcriteria\\b", "\\bminimum marks\\b", "\\bcan i (apply|get in|join)\\b", "\\bcut\\s?off\\b", "\\bpercentage required\\b", "\\bentrance exam\\b"],
+      "keywords": ["eligible", "eligibility", "criteria", "qualification", "cutoff", "percentage", "jee", "cuet", "cat"]
+    },
+    {
+      "name": "fees",
+      "patterns": ["\\bfees?\\b", "\\btuition\\b", "\\bcost\\b", "\\bfee structure\\b", "\\bhow much\\b", "\\bcharges\\b", "\\bannual\\b", "\\bsemester fee\\b"],
+      "keywords": ["fee", "tuition", "cost", "payment", "charge", "expense"]
+    },
+    {
+      "name": "hostel",
+      "patterns": ["\\bhostel\\b", "\\baccommodation\\b", "\\bdorm\\b", "\\bpg\\b", "\\bstay\\b", "\\bboarding\\b", "\\bmess\\b", "\\brooms?\\b"],
+      "keywords": ["hostel", "accommodation", "room", "mess", "stay", "boarding", "residence"]
+    },
+    {
+      "name": "scholarships",
+      "patterns": ["\\bscholarships?\\b", "\\bfinancial aid\\b", "\\bwaiver\\b", "\\bdiscount\\b", "\\bmerit\\b", "\\bfree\\s?ship\\b", "\\bstipend\\b"],
+      "keywords": ["scholarship", "waiver", "concession", "discount", "merit", "grant"]
+    },
+    {
+      "name": "documents",
+      "patterns": ["\\bdocuments?\\b", "\\bcertificates?\\b", "\\bpaperwork\\b", "\\bwhat to bring\\b", "\\bchecklist\\b", "\\bverification\\b", "\\btc\\b", "\\bmigration\\b"],
+      "keywords": ["document", "certificate", "marksheet", "checklist", "verification", "proof"]
+    },
+    {
+      "name": "deadlines",
+      "patterns": ["\\bdeadlines?\\b", "\\blast date\\b", "\\bwhen does admission\\b", "\\bimportant dates?\\b", "\\bclosing date\\b", "\\bstart date\\b", "\\bclasses start\\b"],
+      "keywords": ["deadline", "date", "schedule", "timeline", "commencement", "closing"]
+    }
+  ],
+  "entities": {
+    "programme": {
+      "B.Tech CSE": ["\\bcse\\b", "\\bcomputer science\\b", "\\bb\\.?tech cse\\b", "\\bcs\\b", "\\bsoftware\\b", "\\bcoding\\b"],
+      "B.Tech ECE": ["\\bece\\b", "\\belectronics\\b", "\\bb\\.?tech ece\\b", "\\bcommunication\\b"],
+      "BBA": ["\\bbba\\b", "\\bbachelor of business\\b", "\\bmanagement\\b"],
+      "MBA": ["\\bmba\\b", "\\bmaster of business\\b", "\\bpgdm\\b"]
+    },
+    "category": {
+      "General": ["\\bgeneral\\b", "\\bgen\\b", "\\bur\\b", "\\bunreserved\\b", "\\bopen\\b"],
+      "OBC": ["\\bobc\\b", "\\bother backward\\b", "\\bncl\\b"],
+      "SC": ["\\bsc\\b", "\\bscheduled caste\\b"],
+      "ST": ["\\bst\\b", "\\bscheduled tribe\\b"]
+    },
+    "hostel_type": {
+      "AC": ["\\bac\\b", "\\bair conditioned\\b", "\\btwin\\b", "\\bdouble\\b"],
+      "Non-AC": ["\\bnon[-\\s]?ac\\b", "\\btriple\\b", "\\bordinary\\b", "\\bwithout ac\\b"]
+    }
+  }
+}

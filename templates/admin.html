@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Helpdesk Analytics Dashboard</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f8fafc; padding: 24px; color: #0f172a; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .card { background: #fff; padding: 18px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .card h3 { margin: 0 0 8px; font-size: 13px; color: #64748b; text-transform: uppercase; }
+    .card p { margin: 0; font-size: 26px; font-weight: 700; color: #1e3a8a; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+    th, td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; text-align: left; font-size: 13px; }
+    th { background: #1e3a8a; color: #fff; }
+    .badge-ok { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+    .badge-fail { background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h2>Admission Helpdesk Analytics (Active Rules: {{ bot_version }})</h2>
+  <div class="cards">
+    <div class="card"><h3>Total Queries</h3><p>{{ stats.total }}</p></div>
+    <div class="card"><h3>Answered</h3><p>{{ stats.answered }}</p></div>
+    <div class="card"><h3>Unanswered</h3><p>{{ stats.unanswered }}</p></div>
+    <div class="card"><h3>Answer Rate</h3><p>{{ stats.answer_rate }}%</p></div>
+  </div>
+
+  <h3>Top Unanswered Queries (Rule Expansion Candidates)</h3>
+  <table>
+    <thead><tr><th>User Query</th><th>Frequency</th></tr></thead>
+    <tbody>
+      {% for row in stats.top_unanswered %}
+      <tr><td>{{ row.user_query }}</td><td>{{ row.freq }}</td></tr>
+      {% else %}
+      <tr><td colspan="2">No unanswered queries logged yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3>Recent Conversation Logs</h3>
+  <table>
+    <thead>
+      <tr><th>Time</th><th>Ver</th><th>User Query</th><th>Intent</th><th>Slots</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      {% for log in stats.recent_logs %}
+      <tr>
+        <td>{{ log.timestamp }}</td>
+        <td>{{ log.bot_version }}</td>
+        <td>{{ log.user_query }}</td>
+        <td>{{ log.detected_intent }}</td>
+        <td>{{ log.extracted_slots }}</td>
+        <td>
+          {% if log.is_answered == 1 %}
+            <span class="badge-ok">Answered</span>
+          {% else %}
+            <span class="badge-fail">Fallback</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

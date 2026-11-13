@@ -1,0 +1,80 @@
+{
+  "college_info": {
+    "name": "Lovely Professional University (LPU)",
+    "location": "Jalandhar - Delhi G.T. Road, Phagwara, Punjab, India",
+    "contact": "admissions@lpu.co.in | +91-1824-517000"
+  },
+  "programmes": {
+    "B.Tech CSE": {
+      "full_name": "B.Tech in Computer Science & Engineering",
+      "duration": "4 Years (8 Semesters)",
+      "seats": 1140,
+      "annual_fee": 320000,
+      "min_marks": { "General": 60, "OBC": 60, "SC": 55, "ST": 55 },
+      "eligibility_details": "10+2 with Physics, Mathematics, and English + valid LPUNEST / JEE Main / CUET score."
+    },
+    "B.Tech ECE": {
+      "full_name": "B.Tech in Electronics & Communication Engineering",
+      "duration": "4 Years (8 Semesters)",
+      "seats": 240,
+      "annual_fee": 280000,
+      "min_marks": { "General": 60, "OBC": 60, "SC": 55, "ST": 55 },
+      "eligibility_details": "10+2 with Physics, Mathematics, and English + valid LPUNEST / JEE Main / CUET score."
+    },
+    "BBA": {
+      "full_name": "Bachelor of Business Administration",
+      "duration": "3 Years (6 Semesters)",
+      "seats": 600,
+      "annual_fee": 160000,
+      "min_marks": { "General": 50, "OBC": 50, "SC": 45, "ST": 45 },
+      "eligibility_details": "10+2 in any stream with English from a recognized board + LPUNEST / CUET."
+    },
+    "MBA": {
+      "full_name": "Master of Business Administration",
+      "duration": "2 Years (4 Semesters)",
+      "seats": 500,
+      "annual_fee": 440000,
+      "min_marks": { "General": 55, "OBC": 55, "SC": 50, "ST": 50 },
+      "eligibility_details": "Bachelor's degree in any discipline + valid LPUNEST / CAT / MAT / XAT / CMAT + Video Essay & Interview."
+    }
+  },
+  "hostel": {
+    "AC": {
+      "type": "AC 2-Seater Standard Room",
+      "annual_fee": 128700,
+      "mess_fee": 45000,
+      "amenities": "Air conditioning, 750 free electricity units, attached washroom, Wi-Fi, study table, 24/7 power backup."
+    },
+    "Non-AC": {
+      "type": "Air-Cooled 3-Seater Standard Room",
+      "annual_fee": 97200,
+      "mess_fee": 45000,
+      "amenities": "Air cooler, 350 free electricity units, Wi-Fi, study table, geyser, 24/7 campus security."
+    }
+  },
+  "scholarships": [
+    {
+      "name": "LPUNEST / Qualifying Marks Merit Scholarship",
+      "criteria": "Top LPUNEST score bands (Category A+/A) or 90%+ aggregate in 10+2 / Graduation",
+      "benefit": "Up to 50% to 70% programme fee waiver"
+    },
+    {
+      "name": "Financial Aid for SC/ST/OBC & Economically Weaker Students",
+      "criteria": "Eligible category / income certificates or National Scholarship Portal (NSP) schemes",
+      "benefit": "Up to 100% tuition fee support as per government & university norms"
+    }
+  ],
+  "documents": [
+    "Class 10th & 12th Marksheets and Passing Certificates (plus Graduation for PG)",
+    "Entrance Exam Scorecard (LPUNEST / JEE Main / CUET / CAT)",
+    "Transfer Certificate (TC) & Migration Certificate",
+    "Category / Income Certificate (SC/ST/OBC/EWS, if applicable)",
+    "Aadhaar Card & 4 Passport-size Photographs"
+  ],
+  "deadlines": {
+    "application_start": "15 January 2026",
+    "application_end": "20 July 2026",
+    "entrance_counselling": "25 July 2026",
+    "session_commencement": "10 August 2026"
+  }
+}

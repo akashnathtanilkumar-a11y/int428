@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NITM Admission Helpdesk ({{ bot_version }})</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f3f4f6; display: flex; justify-content: center; padding: 24px; }
+    .chat-box { width: 100%; max-width: 680px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); display: flex; flex-direction: column; height: 85vh; }
+    .header { padding: 16px 20px; background: #1e3a8a; color: #fff; border-radius: 12px 12px 0 0; display: flex; justify-content: space-between; align-items: center; }
+    .header a { color: #93c5fd; text-decoration: none; font-size: 14px; }
+    .context-bar { padding: 8px 20px; background: #eff6ff; font-size: 12px; color: #1e40af; border-bottom: 1px solid #dbeafe; }
+    .messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+    .msg { max-width: 80%; padding: 10px 14px; border-radius: 10px; line-height: 1.45; white-space: pre-line; font-size: 14px; }
+    .user { align-self: flex-end; background: #2563eb; color: #fff; }
+    .bot { align-self: flex-start; background: #f1f5f9; color: #0f172a; border: 1px solid #e2e8f0; }
+    .input-area { display: flex; gap: 8px; padding: 14px; border-top: 1px solid #e5e7eb; }
+    input { flex: 1; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; }
+    button { padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+    .send-btn { background: #1e3a8a; color: #fff; }
+    .reset-btn { background: #e2e8f0; color: #334155; }
+  </style>
+</head>
+<body>
+  <div class="chat-box">
+    <div class="header">
+      <div><strong>NITM Admission Helpdesk</strong> <small>({{ bot_version }})</small></div>
+      <a href="/admin" target="_blank">Admin Dashboard ↗</a>
+    </div>
+    <div class="context-bar" id="contextBar">Session Context: None</div>
+    <div class="messages" id="messages">
+      <div class="msg bot">Namaste! Ask me about programmes, eligibility, fees, hostels, scholarships, documents, or deadlines.</div>
+    </div>
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Type your admission query..." onkeydown="if(event.key==='Enter') sendMessage()" />
+      <button class="send-btn" onclick="sendMessage()">Send</button>
+      <button class="reset-btn" onclick="resetSession()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    let sessionId = crypto.randomUUID();
+    const messagesDiv = document.getElementById("messages");
+    const contextBar = document.getElementById("contextBar");
+
+    function appendMsg(text, cls) {
+      const div = document.createElement("div");
+      div.className = `msg ${cls}`;
+      div.textContent = text;
+      messagesDiv.appendChild(div);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("userInput");
+      const text = input.value.trim();
+      if (!text) return;
+      appendMsg(text, "user");
+      input.value = "";
+
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ session_id: sessionId, message: text })
+      });
+      const data = await res.json();
+      appendMsg(data.reply, "bot");
+
+      const ctx = data.context || {};
+      contextBar.textContent = `Context → Programme: ${ctx.programme || "-"} | Marks: ${ctx.marks || "-"} | Category: ${ctx.category || "-"} | Hostel: ${ctx.hostel_type || "-"}`;
+    }
+
+    async function resetSession() {
+      await fetch("/reset", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ session_id: sessionId })
+      });
+      sessionId = crypto.randomUUID();
+      messagesDiv.innerHTML = '<div class="msg bot">Session reset. How can I help you with admissions?</div>';
+      contextBar.textContent = "Session Context: None";
+    }
+  </script>
+</body>
+</html>

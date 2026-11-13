@@ -1,0 +1,63 @@
+{
+  "version": "v1",
+  "intents": [
+    {
+      "name": "greeting",
+      "patterns": ["\\bhello\\b", "\\bhi\\b", "\\bhey\\b", "\\bgood morning\\b"],
+      "keywords": ["hello", "hi", "hey"]
+    },
+    {
+      "name": "programmes",
+      "patterns": ["\\bprogrammes?\\b", "\\bcourses?\\b", "\\bdegrees?\\b", "\\bwhat do you offer\\b"],
+      "keywords": ["programme", "course", "degree", "branch"]
+    },
+    {
+      "name": "eligibility",
+      "patterns": ["\\beligib(le|ility)\\b", "\\bcriteria\\b", "\\bminimum marks\\b", "\\bcan i apply\\b"],
+      "keywords": ["eligible", "eligibility", "criteria", "qualification"]
+    },
+    {
+      "name": "fees",
+      "patterns": ["\\bfees?\\b", "\\btuition\\b", "\\bcost\\b", "\\bfee structure\\b"],
+      "keywords": ["fee", "tuition", "cost", "payment"]
+    },
+    {
+      "name": "hostel",
+      "patterns": ["\\bhostel\\b", "\\baccommodation\\b", "\\bdorm\\b", "\\bpg\\b"],
+      "keywords": ["hostel", "accommodation", "room", "mess"]
+    },
+    {
+      "name": "scholarships",
+      "patterns": ["\\bscholarships?\\b", "\\bfinancial aid\\b", "\\bwaiver\\b"],
+      "keywords": ["scholarship", "waiver", "concession"]
+    },
+    {
+      "name": "documents",
+      "patterns": ["\\bdocuments?\\b", "\\bcertificates?\\b", "\\bpaperwork\\b"],
+      "keywords": ["document", "certificate", "marksheet"]
+    },
+    {
+      "name": "deadlines",
+      "patterns": ["\\bdeadlines?\\b", "\\blast date\\b", "\\bwhen does admission\\b"],
+      "keywords": ["deadline", "date", "schedule", "timeline"]
+    }
+  ],
+  "entities": {
+    "programme": {
+      "B.Tech CSE": ["\\bcse\\b", "\\bcomputer science\\b", "\\bb\\.?tech cse\\b"],
+      "B.Tech ECE": ["\\bece\\b", "\\belectronics\\b", "\\bb\\.?tech ece\\b"],
+      "BBA": ["\\bbba\\b", "\\bbachelor of business\\b"],
+      "MBA": ["\\bmba\\b", "\\bmaster of business\\b"]
+    },
+    "category": {
+      "General": ["\\bgeneral\\b", "\\bgen\\b", "\\bur\\b"],
+      "OBC": ["\\bobc\\b", "\\bother backward\\b"],
+      "SC": ["\\bsc\\b", "\\bscheduled caste\\b"],
+      "ST": ["\\bst\\b", "\\bscheduled tribe\\b"]
+    },
+    "hostel_type": {
+      "AC": ["\\bac\\b", "\\bair conditioned\\b", "\\btwin\\b"],
+      "Non-AC": ["\\bnon[-\\s]?ac\\b", "\\btriple\\b", "\\bordinary\\b"]
+    }
+  }
+}
